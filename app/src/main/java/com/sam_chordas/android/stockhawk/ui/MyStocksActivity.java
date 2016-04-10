@@ -179,9 +179,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   }
 
   public void networkToast() {
-    Snackbar snackbar = Snackbar
-            .make(coordinatorLayout,  getResources().getString(R.string.network_toast), Snackbar.LENGTH_LONG);
-    snackbar.show();
+    Snackbar.make(coordinatorLayout,  getResources().getString(R.string.network_toast), Snackbar.LENGTH_LONG).show();
 //        Toast.makeText(mContext, getString(R.string.network_toast), Toast.LENGTH_SHORT).show();
   }
 
