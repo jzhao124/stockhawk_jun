@@ -12,4 +12,7 @@
   <string name="widget_title">Today\'s Market</string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
   <string name="title_activity_stock_detail">StockDetailActivity</string>
+
+  <string name="content_description_add_stock">Add a stock item</string>
+
 </resources>
