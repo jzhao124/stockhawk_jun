@@ -76,7 +76,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     mServiceIntent = new Intent(this, StockIntentService.class);
     if (savedInstanceState == null) {
       // Run the initialize task service so that some stocks appear upon an empty database
-      mServiceIntent.putExtra("tag", "init");
+      mServiceIntent.putExtra(getResources().getString(R.string.string_tag), getResources().getString(R.string.string_init));
       if (isConnected) {
         startService(mServiceIntent);
         textNoNetwork.setVisibility(View.GONE);
@@ -98,7 +98,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 // do something on item click
                 Intent graphIntent = new Intent(mContext, StockDetailActivity.class);
                 mCursor.moveToPosition(position);
-                graphIntent.putExtra("symbol", mCursor.getString(mCursor.getColumnIndex("symbol")));
+                graphIntent.putExtra(getResources().getString(R.string.string_symbol), mCursor.getString(mCursor.getColumnIndex(getResources().getString(R.string.string_symbol))));
                 mContext.startActivity(graphIntent);
               }
             }));
@@ -124,15 +124,15 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                               new String[]{input.toString()}, null);
                       if (c.getCount() != 0) {
                         Toast toast =
-                                Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                                Toast.makeText(MyStocksActivity.this, getResources().getString(R.string.string_tag),
                                         Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                         toast.show();
                         return;
                       } else {
                         // Add the stock to DB
-                        mServiceIntent.putExtra("tag", "add");
-                        mServiceIntent.putExtra("symbol", input.toString());
+                        mServiceIntent.putExtra(getResources().getString(R.string.string_tag), getResources().getString(R.string.string_add));
+                        mServiceIntent.putExtra(getResources().getString(R.string.string_symbol), input.toString());
                         startService(mServiceIntent);
                       }
                     }

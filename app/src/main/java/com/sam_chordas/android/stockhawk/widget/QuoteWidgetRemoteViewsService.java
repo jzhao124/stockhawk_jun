@@ -77,22 +77,22 @@ public class QuoteWidgetRemoteViewsService extends RemoteViewsService {
 
                 // Bind data to the views
                 views.setTextViewText(R.id.stock_symbol, data.getString(data.getColumnIndex
-                        ("symbol")));
+                        (getResources().getString(R.string.string_symbol))));
 
-                if (data.getInt(data.getColumnIndex("is_up")) == 1) {
-                    views.setInt(R.id.change, "setBackgroundResource", R.drawable.percent_change_pill_green);
+                if (data.getInt(data.getColumnIndex(QuoteColumns.ISUP)) == 1) {
+                    views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_green);
                 } else {
-                    views.setInt(R.id.change, "setBackgroundResource", R.drawable.percent_change_pill_red);
+                    views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_red);
                 }
 
                 if (Utils.showPercent) {
-                    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex("percent_change")));
+                    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(QuoteColumns.PERCENT_CHANGE)));
                 } else {
-                    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex("change")));
+                    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(QuoteColumns.CHANGE)));
                 }
 
                 final Intent fillInIntent = new Intent();
-                fillInIntent.putExtra("symbol", data.getString(data.getColumnIndex("symbol")));
+                fillInIntent.putExtra(getResources().getString(R.string.string_symbol), data.getString(data.getColumnIndex(QuoteColumns.SYMBOL)));
                 views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
 
                 return views;
